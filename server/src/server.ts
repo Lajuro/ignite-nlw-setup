@@ -1,6 +1,9 @@
-import Fastify from "fastify";
+import Fastify, { fastify } from "fastify";
 import cors from "@fastify/cors";
 import { appRoutes } from "./routes";
+import chalk from "chalk";
+
+const PORT = 3333;
 
 // Inicializa o servidor Fastify
 const app = Fastify();
@@ -12,6 +15,8 @@ app.register(cors);
 app.register(appRoutes);
 
 // Inicia o servidor na porta 3333
-app.listen({ port: 3333 }, (err, address) => {
-  console.log(`HTTP Server running`);
+app.listen(PORT, "192.168.15.11", (err, address) => {
+  console.clear();
+  console.log(chalk.green.bold.underline(`API Habits - NLW Setup`));
+  console.log("\nServer listening at", chalk.cyan(`http://localhost:${PORT}`));
 });
